@@ -17,7 +17,6 @@ struct WorkoutDetailView: View {
             }
 
             Section("Exercises") {
-                // Safely unwrap and sort the exercises array
                 ForEach(workout.exercises?.sorted(by: { $0.orderIndex < $1.orderIndex }) ?? []) { exercise in
                     NavigationLink(destination: ExerciseDetailView(exercise: exercise)) {
                         HStack {
@@ -27,8 +26,14 @@ struct WorkoutDetailView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            deleteExercise(exercise)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
-                .onDelete(perform: deleteExercises)
 
                 Button(action: addExercise) {
                     Label("Add Exercise", systemImage: "plus")
@@ -37,11 +42,6 @@ struct WorkoutDetailView: View {
         }
         .navigationTitle("Edit Workout")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                EditButton()
-            }
-        }
     }
 
     private func addExercise() {
@@ -49,19 +49,15 @@ struct WorkoutDetailView: View {
             let currentCount = workout.exercises?.count ?? 0
             let newExercise = Exercise(name: "New Exercise", orderIndex: currentCount)
 
-            // Establish the two-way relationship
             newExercise.workout = workout
-            workout.exercises?.append(newExercise)
+            workout.exercises = (workout.exercises ?? []) + [newExercise]
+            modelContext.insert(newExercise)
         }
     }
 
-    private func deleteExercises(offsets: IndexSet) {
+    private func deleteExercise(_ exercise: Exercise) {
         withAnimation {
-            let sortedExercises = workout.exercises?.sorted(by: { $0.orderIndex < $1.orderIndex }) ?? []
-            for index in offsets {
-                let exerciseToDelete = sortedExercises[index]
-                modelContext.delete(exerciseToDelete)
-            }
+            modelContext.delete(exercise)
         }
     }
 }

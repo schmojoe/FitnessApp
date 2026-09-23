@@ -9,7 +9,6 @@ final class Exercise {
     var weight: Double
     var orderIndex: Int
 
-    // Optional reference back to the parent workout
     var workout: Workout?
 
     init(name: String = "", sets: Int = 3, reps: Int = 10, weight: Double = 0.0, orderIndex: Int = 0) {

@@ -3,7 +3,7 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var workouts: [Workout]
+    @Query(sort: \Workout.date, order: .reverse) private var workouts: [Workout]
 
     var body: some View {
         NavigationStack {
@@ -18,14 +18,17 @@ struct ContentView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            deleteWorkout(workout)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
-                .onDelete(perform: deleteWorkouts)
             }
             .navigationTitle("My Workouts")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    EditButton()
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: addWorkout) {
                         Label("Add Workout", systemImage: "plus")
@@ -42,16 +45,14 @@ struct ContentView: View {
         }
     }
 
-    private func deleteWorkouts(offsets: IndexSet) {
+    private func deleteWorkout(_ workout: Workout) {
         withAnimation {
-            for index in offsets {
-                modelContext.delete(workouts[index])
-            }
+            modelContext.delete(workout)
         }
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Workout.self, inMemory: true)
+        .modelContainer(for: [Workout.self, Exercise.self], inMemory: true)
 }
