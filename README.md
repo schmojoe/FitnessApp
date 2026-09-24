@@ -5,9 +5,10 @@ A very basic iOS app for logging workout progress.
 
 ## Timeline
 
-- [x] 09/24/2026 : MVP drafted
+- [x] 09/24/2026 : MVP core drafted
 - [ ] ??/??/20?? : MVP core built
-- [ ] ??/??/20?? : MVP successfully launched on actual iPhone 14
+- [ ] ??/??/20?? : MVP core successfully launched on actual iPhone 14
+- [ ] ??/??/20?? : MVP core demo produced (link to come)
 
 
 ## Citations
@@ -20,7 +21,7 @@ AI was used to help build this project 😯😯😯 ... it's 2026, here's what I
 Skeleton code from initial commit was provided by Xcode on "New Project" creation.
 
 The .gitignore file is from the associated Swift template via the official GitHub GitIgnore project:<br>
-↳ url: https://github.com/github/gitignore/blob/main/Swift.gitignore
+➡️ url: https://github.com/github/gitignore/blob/main/Swift.gitignore
 
 Typical Workflow:
 1. Develop with VS Code + Agentic AI
