@@ -1,0 +1,69 @@
+FitnessApp Minimum Viable Product (MVP)
+
+
+Introduction:
+
+As the name should imply, the proposed app is intended to log workout progress.
+
+Most "workout apps" that I've seen are either over-complicated or simply don't accomplish what I outline here.
+I do understand that many people who are new to fitness may need extra assistance to guide them along.
+However, I'm drafting this with a specific problem in mind which assumes an existing "fitness plan" of its user.
+
+Therefore, at the time of writing this, I'm mostly designing this app for personal use.
+Depending on how things go, I may decide to scale it up in the future.
+
+
+The Problem:
+
+I like to work out, and I especially enjoy the feeling of progression that comes with it.
+For a while now, I've been doing full-body gym workouts and long-distance running sessions.
+Recently, I started to log my progress in a journal i.e., weight & reps. for exercises, dist. & time for running.
+This got annoying fast since I was writing mostly the same block of text everyday but only changing the numbers ...
+
+
+Background:
+
+I've had my best results when I draft a "program" over a period of time where I follow a "split" of workouts.
+My "program" will always include days devoted to long-distance running where I try to run as far and fast as possible.
+The "split" really describes my gym workouts which are individually different but collectively the same eack week.
+
+I also use a nutrition logger (Cronometer) almost every day, I've also used others i.e., MyFitnessPal and LoseIt.
+These apps are rather nice, because you can find almost any food and get a good estimate of its calories, macros, etc.
+With Cronometer, for example, I'm able to create custom meals that I can easily log each day.
+This is convenient since I would otherwise have to individually log each food item every day.
+What's more is the fact that I generally eat the same meals every day but "rotate" them so I don't get bored.
+
+
+Core Goals:
+
+Hopefully by now the main goal of the proposed app is evident ...
+I want to build an app where we can save and log progression for workout "programs" and assoc. "splits" over time.
+We are not trying to add our own nutritional logger on top at this time since others already do this well.
+However, we are modelling our app somewhat after these nutritional loggers.
+i.e., a workout is a "recipe" in that it has the same "ingredients" each time but with different "serving" sizes.
+
+Our app should allow its user to draft a "program" and declare it over an extended period of time.
+The user may cancel a "program" at any time, but should be able to consult older "programs" whenever (unless deleted).
+On "program" creation, a user should be able to define its "split" i.e., the workouts to be done for each week.
+Each workout should be constructed with a list of user-defined exercises and goals for sets and rep. ranges.
+
+The whole point of our app is to actually log each workout, so the user should be able to:
+    * Record the actual number of sets and reps. completed for each workout.
+    * Record the weight in lbs. or kgs. used for each set of a particular exercise.
+    * Replace or delete an exercise for a particular workout.
+    * If it's a cardio session, log the type (running, biking, etc.) with dist. traveled, and/or time done.
+
+The user shouldn't have to "lock in" to a particular "program" but instead log workouts as completed instead.
+This allows for more flexibility but is annoying in that everything would need to be entered manually each time.
+This is also the exact problem I had journaling each workout by hand which inspired this app in the first place.
+We could save recent exercises (and even workouts) into a cache, for example, so that this process is a bit faster.
+
+
+Reach Goals:
+
+I will likely create a new document for this if I do, in fact, decide to expand on this app later.
+For now, here is a wish list of things that could make this a modern industry-grade app:
+    * Incorporate analytics, milestones, benchmarks, etc. based on user performance over time.
+    * Fetch data from APIs e.g., get & save a publicly available workout program;
+      for example, the current program I follow is from Bodybuilding.com, could our app access that if it wanted?
+    * Add ML/AI: make recommendations, construct a program or routine for a user based on goals and/or limitations.
