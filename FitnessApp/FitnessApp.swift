@@ -7,6 +7,10 @@ struct FitnessApp: App {
         let schema = Schema([
             Workout.self,
             Exercise.self,
+            ExerciseSet.self,
+            Program.self,
+            WorkoutPlan.self,
+            ExercisePlan.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

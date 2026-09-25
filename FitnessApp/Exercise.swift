@@ -8,12 +8,30 @@ final class Exercise {
     var reps: Int
     var weight: Double
     var orderIndex: Int
+    var setsInitialized: Bool = false
 
     var workout: Workout?
+
+    @Relationship(deleteRule: .cascade, inverse: \ExerciseSet.exercise)
+    var loggedSets: [ExerciseSet]? = []
 
     init(name: String = "", sets: Int = 3, reps: Int = 10, weight: Double = 0.0, orderIndex: Int = 0) {
         self.name = name
         self.sets = sets
+        self.reps = reps
+        self.weight = weight
+        self.orderIndex = orderIndex
+    }
+}
+
+@Model
+final class ExerciseSet {
+    var reps: Int
+    var weight: Double
+    var orderIndex: Int
+    var exercise: Exercise?
+
+    init(reps: Int = 10, weight: Double = 0, orderIndex: Int = 0) {
         self.reps = reps
         self.weight = weight
         self.orderIndex = orderIndex
